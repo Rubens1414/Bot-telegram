@@ -130,7 +130,7 @@ def buscar(constelacion,chat_id):
 
         # Enviar la imagen al chat
         bot.send_photo(chat_id, buf)
-        gif_path = "Bot_telgram\Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
+        gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
         bot.send_animation(chat_id, open(gif_path, "rb"))
         # Limpiar el buffer y el plot
         buf.truncate(0)
@@ -207,7 +207,7 @@ def mostrarEstrellas(chat_id):
 
   # Enviar la imagen al chat
   bot.send_photo(chat_id, buf)
-  gif_path = "Bot_telgram\Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
+  gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
   bot.send_animation(chat_id, open(gif_path, "rb"))
   # Limpiar el buffer y el plot
   buf.truncate(0)
@@ -216,21 +216,21 @@ def mostrarEstrellas(chat_id):
 
 def mostrar_constelaciones(chat_id):
   # Leer archivo y almacenar datos en una lista
-  with open('Bot_telgram/constellations/Cygnet.txt') as f:
+  with open('constellations/Cygnet.txt') as f:
       lines = f.readlines()
-  with open('Bot_telgram/constellations/Boyero.txt') as f:
+  with open('constellations/Boyero.txt') as f:
       lines1 = f.readlines()
-  with open('Bot_telgram/constellations/Casiopea.txt') as f:
+  with open('constellations/Casiopea.txt') as f:
       lines2 = f.readlines()
-  with open('Bot_telgram/constellations/Cazo.txt') as f:
+  with open('constellations/Cazo.txt') as f:
       lines3 = f.readlines()
-  with open('Bot_telgram/constellations/Geminis.txt') as f:
+  with open('constellations/Geminis.txt') as f:
       lines4 = f.readlines()
-  with open('Bot_telgram/constellations/Hydra.txt') as f:
+  with open('constellations/Hydra.txt') as f:
       lines5 = f.readlines()
-  with open('Bot_telgram/constellations/OsaMayor.txt') as f:
+  with open('constellations/OsaMayor.txt') as f:
       lines6 = f.readlines()
-  with open('Bot_telgram/constellations/OsaMenor.txt') as f:
+  with open('constellations/OsaMenor.txt') as f:
       lines7 = f.readlines()
 
   # Eliminar saltos de línea y separar elementos de cada línea
