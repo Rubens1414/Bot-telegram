@@ -56,7 +56,7 @@ for i in range(num_rows):
 
 def buscar(constelacion,chat_id):
     try:
-        with open("Bot_telgram/constellations/" +constelacion + ".txt") as f:
+        with open("constellations/" +constelacion + ".txt") as f:
             lines = f.readlines()
         # Eliminar saltos de línea y separar elementos de cada línea
         lines = [line.strip().split(',') for line in lines]
@@ -355,7 +355,7 @@ def mostrar_constelaciones(chat_id):
 
     # Enviar la imagen al chat
   bot.send_photo(chat_id, buf)
-  gif_path = "Bot_telgram\Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
+  gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
   bot.send_animation(chat_id, open(gif_path, "rb"))
     # Limpiar el buffer y el plot
   buf.truncate(0)
