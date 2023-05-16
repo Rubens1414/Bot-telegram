@@ -22,7 +22,7 @@ matplotlib.use('Agg')
 bot = telebot.TeleBot("6148003608:AAFwM91O7NqWUznSlHIFLoEGzMxIa0a7eCA")
 # Leer archivo y almacenar datos en una lista
 
-with open("Bot_telgram/constellations/stars.txt") as f:
+with open("constellations/stars.txt") as f:
     print('entro')
     lines = f.readlines()
 
