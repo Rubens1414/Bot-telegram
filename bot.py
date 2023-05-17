@@ -22,7 +22,7 @@ matplotlib.use('Agg')
 # Token del bot
 bot = telebot.TeleBot("6148003608:AAFwM91O7NqWUznSlHIFLoEGzMxIa0a7eCA")
 # Leer archivo y almacenar datos en una lista (Para cargar las estrellas)
-with open("constellations/stars.txt") as f:
+with open("Bot_telgram/constellations/stars.txt") as f:
     print('entro')
     lines = f.readlines()
 
@@ -56,7 +56,7 @@ for i in range(num_rows):
 
 def buscar(constelacion,chat_id):
     try:
-        with open("constellations/" +constelacion + ".txt") as f:
+        with open("Bot_telgram/constellations/" +constelacion + ".txt") as f:
             lines = f.readlines()
         # Eliminar saltos de línea y separar elementos de cada línea
         lines = [line.strip().split(',') for line in lines]
@@ -131,7 +131,7 @@ def buscar(constelacion,chat_id):
 
         # Enviar la imagen al chat
         bot.send_photo(chat_id, buf)
-        gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
+        gif_path = "Bot_telgram\Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
         bot.send_animation(chat_id, open(gif_path, "rb"))
         # Limpiar el buffer y el plot
         buf.truncate(0)
@@ -217,21 +217,21 @@ def mostrarEstrellas(chat_id):
 
 def mostrar_constelaciones(chat_id):
   # Leer archivo y almacenar datos en una lista
-  with open('constellations/Cygnet.txt') as f:
+  with open('Bot_telgram/constellations/Cygnet.txt') as f:
       lines = f.readlines()
-  with open('constellations/Boyero.txt') as f:
+  with open('Bot_telgram/constellations/Boyero.txt') as f:
       lines1 = f.readlines()
-  with open('constellations/Casiopea.txt') as f:
+  with open('Bot_telgram/constellations/Casiopea.txt') as f:
       lines2 = f.readlines()
-  with open('constellations/Cazo.txt') as f:
+  with open('Bot_telgram/constellations/Cazo.txt') as f:
       lines3 = f.readlines()
-  with open('constellations/Geminis.txt') as f:
+  with open('Bot_telgram/constellations/Geminis.txt') as f:
       lines4 = f.readlines()
-  with open('constellations/Hydra.txt') as f:
+  with open('Bot_telgram/constellations/Hydra.txt') as f:
       lines5 = f.readlines()
-  with open('constellations/OsaMayor.txt') as f:
+  with open('Bot_telgram/constellations/OsaMayor.txt') as f:
       lines6 = f.readlines()
-  with open('constellations/OsaMenor.txt') as f:
+  with open('Bot_telgram/constellations/OsaMenor.txt') as f:
       lines7 = f.readlines()
 
   # Eliminar saltos de línea y separar elementos de cada línea
@@ -356,7 +356,7 @@ def mostrar_constelaciones(chat_id):
 
     # Enviar la imagen al chat
   bot.send_photo(chat_id, buf)
-  gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
+  gif_path = "Bot_telgram\Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
   bot.send_animation(chat_id, open(gif_path, "rb"))
     # Limpiar el buffer y el plot
   buf.truncate(0)
@@ -466,8 +466,6 @@ def FGO2(orden, expresion, chat_id):
     bot.send_message(chat_id, f"La secuencia generada es {fn[::-1]}")
     sucesion(fn[::-1], chat_id)
 
-
-
 @bot.message_handler(commands=['start'])
 def enviar(message):
     texto_html = '<b>BIENVENIDO, SOY BOT-RECURRENTE o BOT-ESTELAR</b> 🥑' + '\n'
@@ -480,7 +478,7 @@ def enviar(message):
     texto_html += ' ' + '\n'
     texto_html += '<b>/Constelacion :</b> Modo constelaciones' + '\n'
     texto_html += ' ' + '\n'
-    texto_html += '❓<b>/help</b> Instrucciones de como utilizar esta eleccion ' + '\n'
+    texto_html += '❓<b>/ayuda</b> Instrucciones de como utilizar esta eleccion ' + '\n'
     bot.reply_to(message, texto_html, parse_mode="html")
 
 @bot.message_handler(commands=['recurrente'])
@@ -497,7 +495,7 @@ def enviar(message):
     texto_html += ' ' + '\n'
     texto_html += '<b>/sec:</b> De una secuencia te doy la funcion no recurrente' + '\n'
     texto_html += ' ' + '\n'
-    texto_html += '❓<b>/help:</b> Instrucciones de como utilizar constelaciones ' + '\n'
+    texto_html += '❓<b>/ayuda:</b> Instrucciones de como utilizar constelaciones ' + '\n'
     bot.reply_to(message, texto_html, parse_mode="html")
 
 @bot.message_handler(commands=['Constelacion'])
@@ -515,12 +513,12 @@ def enviar(message):
     texto_html += ' ' + '\n'
     texto_html += '<b>/TODAS:</b> Te dare TODAS, TOOOODAS las constelaciones que tengo 🌠' + '\n'
     texto_html += ' ' + '\n'
-    texto_html += '❓🌟<b>/help:</b> Instrucciones de como utilizar constelaciones' + '\n'
+    texto_html += '❓🌟<b>/ayuda:</b> Instrucciones de como utilizar constelaciones' + '\n'
     bot.reply_to(message, texto_html, parse_mode="html")
-    gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
+    gif_path = "Bot_telgram\Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
     bot.send_animation(chat_id, open(gif_path, "rb"))
 
-@bot.message_handler(commands=['Help', 'help'])
+@bot.message_handler(commands=['ayuda', 'Ayuda'])
 def enviar_ayuda(message):
     texto_help_html = 'Tranquilo aqui te dejo las instrucciones de como utilizarme 😊' + '\n'
     texto_help_html += ' ' + '\n'
@@ -673,7 +671,7 @@ def non_command_handler(message):
     if command != "/help" or command != "/FGO" or command != "/Help" or command != "/f_n" or command != "/sec":
         bot.send_message(message.chat.id, "❓")
         bot.send_message(message.chat.id,
-                         "Lo siento, el comando: ('{}')  no existe, utilice /help para saber que comando utilizar".format(
+                         "Lo siento, el comando: ('{}')  no existe, utilice /ayuda para saber que comando utilizar".format(
                              command))
 if __name__ == '__main__':
     print('Inicio el bot')
