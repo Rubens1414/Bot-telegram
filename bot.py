@@ -7,6 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1qxYjjk2VzIG-6IWGR3-MWHhCEPIveSec
 """
 
+#Librerias
 import matplotlib
 import telebot
 from sympy.parsing.sympy_parser import parse_expr
@@ -20,9 +21,8 @@ matplotlib.use('Agg')
 
 # Token del bot
 bot = telebot.TeleBot("6148003608:AAFwM91O7NqWUznSlHIFLoEGzMxIa0a7eCA")
-# Leer archivo y almacenar datos en una lista
-
-with open("constellations/stars.txt") as f:
+# Leer archivo y almacenar datos en una lista (Para cargar las estrellas)
+with open("Bot_telgram/constellations/stars.txt") as f:
     print('entro')
     lines = f.readlines()
 
@@ -40,7 +40,7 @@ for line in lines:
         else:
             line[6:] = [name]
 
-# Crear matriz NumPy bidimensional con dtype=object
+# Crear matriz NumPy bidimensional 
 num_rows = len(lines)
 num_cols = max(len(line) for line in lines)
 data_2d = np.empty((num_rows, num_cols), dtype=object)
@@ -56,10 +56,11 @@ for i in range(num_rows):
 
 def buscar(constelacion,chat_id):
     try:
-        with open("constellations/" +constelacion + ".txt") as f:
+        with open("Bot_telgram/constellations/" +constelacion + ".txt") as f:
             lines = f.readlines()
         # Eliminar saltos de línea y separar elementos de cada línea
         lines = [line.strip().split(',') for line in lines]
+        #Diccionario donde guardara las coordenadas para las estrellas que tenga nombres
         star_coords = {}
         for row in data_2d:
             if row[6]:
@@ -72,7 +73,7 @@ def buscar(constelacion,chat_id):
                 x = float(row[0])
                 y = float(row[1])
                 star_coords[star_name] = (x, y)
-
+        #Guarda las coordenadas de las estrellas sin nombre, agregando un nombre i
         star_coords2 = {}
         counter = 1
         for row in data_2d:
@@ -130,7 +131,7 @@ def buscar(constelacion,chat_id):
 
         # Enviar la imagen al chat
         bot.send_photo(chat_id, buf)
-        gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
+        gif_path = "Bot_telgram\Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
         bot.send_animation(chat_id, open(gif_path, "rb"))
         # Limpiar el buffer y el plot
         buf.truncate(0)
@@ -207,7 +208,7 @@ def mostrarEstrellas(chat_id):
 
   # Enviar la imagen al chat
   bot.send_photo(chat_id, buf)
-  gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
+  gif_path = "Bot_telgram\Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
   bot.send_animation(chat_id, open(gif_path, "rb"))
   # Limpiar el buffer y el plot
   buf.truncate(0)
@@ -216,21 +217,21 @@ def mostrarEstrellas(chat_id):
 
 def mostrar_constelaciones(chat_id):
   # Leer archivo y almacenar datos en una lista
-  with open('constellations/Cygnet.txt') as f:
+  with open('Bot_telgram/constellations/Cygnet.txt') as f:
       lines = f.readlines()
-  with open('constellations/Boyero.txt') as f:
+  with open('Bot_telgram/constellations/Boyero.txt') as f:
       lines1 = f.readlines()
-  with open('constellations/Casiopea.txt') as f:
+  with open('Bot_telgram/constellations/Casiopea.txt') as f:
       lines2 = f.readlines()
-  with open('constellations/Cazo.txt') as f:
+  with open('Bot_telgram/constellations/Cazo.txt') as f:
       lines3 = f.readlines()
-  with open('constellations/Geminis.txt') as f:
+  with open('Bot_telgram/constellations/Geminis.txt') as f:
       lines4 = f.readlines()
-  with open('constellations/Hydra.txt') as f:
+  with open('Bot_telgram/constellations/Hydra.txt') as f:
       lines5 = f.readlines()
-  with open('constellations/OsaMayor.txt') as f:
+  with open('Bot_telgram/constellations/OsaMayor.txt') as f:
       lines6 = f.readlines()
-  with open('constellations/OsaMenor.txt') as f:
+  with open('Bot_telgram/constellations/OsaMenor.txt') as f:
       lines7 = f.readlines()
 
   # Eliminar saltos de línea y separar elementos de cada línea
@@ -355,7 +356,7 @@ def mostrar_constelaciones(chat_id):
 
     # Enviar la imagen al chat
   bot.send_photo(chat_id, buf)
-  gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
+  gif_path = "Bot_telgram\Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
   bot.send_animation(chat_id, open(gif_path, "rb"))
     # Limpiar el buffer y el plot
   buf.truncate(0)
@@ -665,20 +666,15 @@ def mostrar_todas_estrellas(message):
     chat_id = message.chat.id
     bot.send_message(chat_id, f"Aqui estan TODAS las constelaciones")
     mostrar_constelaciones(chat_id)  
+
 @bot.message_handler(content_types=['text'])
 def non_command_handler(message):
     command = message.text
     if command != "/help" or command != "/FGO" or command != "/Help" or command != "/f_n" or command != "/sec":
-        enviar(message)
-        """
         bot.send_message(message.chat.id, "❓")
         bot.send_message(message.chat.id,
                          "Lo siento, el comando: ('{}')  no existe, utilice /help para saber que comando utilizar".format(
                              command))
-        """
-
-
-
 if __name__ == '__main__':
     print('Inicio el bot')
     bot.infinity_polling()
