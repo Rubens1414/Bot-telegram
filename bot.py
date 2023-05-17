@@ -496,7 +496,7 @@ def enviar(message):
     texto_html += '❓<b>/ayuda:</b> Instrucciones de como utilizar constelaciones ' + '\n'
     bot.reply_to(message, texto_html, parse_mode="html")
 
-@bot.message_handler(commands=['Constelacion'])
+@bot.message_handler(commands=['Constelacion','constelacion'])
 def enviar(message):
     chat_id = message.chat.id
     texto_html = '<b>BIENVENIDO, SOY BOT-CONSTELACIONES</b>🌌' + '\n'
