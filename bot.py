@@ -131,8 +131,7 @@ def buscar(constelacion,chat_id):
 
         # Enviar la imagen al chat
         bot.send_photo(chat_id, buf)
-        gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
-        bot.send_animation(chat_id, open(gif_path, "rb"))
+     
         # Limpiar el buffer y el plot
         buf.truncate(0)
         buf.seek(0)
@@ -356,8 +355,7 @@ def mostrar_constelaciones(chat_id):
 
     # Enviar la imagen al chat
   bot.send_photo(chat_id, buf)
-  gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
-  bot.send_animation(chat_id, open(gif_path, "rb"))
+
     # Limpiar el buffer y el plot
   buf.truncate(0)
   buf.seek(0)
@@ -481,7 +479,7 @@ def enviar(message):
     texto_html += '❓<b>/ayuda</b> Instrucciones de como utilizar esta eleccion ' + '\n'
     bot.reply_to(message, texto_html, parse_mode="html")
 
-@bot.message_handler(commands=['recurrente'])
+@bot.message_handler(commands=['recurrente','Recurrente'])
 def enviar(message):
     texto_html = '<b>BIENVENIDO, SOY BOT-RECURRENTE</b> 🥑' + '\n'
     texto_html += ' ' + '\n'
@@ -515,8 +513,7 @@ def enviar(message):
     texto_html += ' ' + '\n'
     texto_html += '❓🌟<b>/ayuda:</b> Instrucciones de como utilizar constelaciones' + '\n'
     bot.reply_to(message, texto_html, parse_mode="html")
-    gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
-    bot.send_animation(chat_id, open(gif_path, "rb"))
+    
 
 @bot.message_handler(commands=['ayuda', 'Ayuda'])
 def enviar_ayuda(message):
