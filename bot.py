@@ -22,8 +22,8 @@ matplotlib.use('Agg')
 # Token del bot
 bot = telebot.TeleBot("6148003608:AAFwM91O7NqWUznSlHIFLoEGzMxIa0a7eCA")
 # Leer archivo y almacenar datos en una lista (Para cargar las estrellas)
-with open("Bot_telgram/constellations/stars.txt") as f:
-    print('entro')
+with open("constellations/stars.txt") as f:
+   
     lines = f.readlines()
 
 # Eliminar saltos de línea y separar elementos de cada línea
@@ -56,7 +56,7 @@ for i in range(num_rows):
 
 def buscar(constelacion,chat_id):
     try:
-        with open("Bot_telgram/constellations/" +constelacion + ".txt") as f:
+        with open("constellations/" +constelacion + ".txt") as f:
             lines = f.readlines()
         # Eliminar saltos de línea y separar elementos de cada línea
         lines = [line.strip().split(',') for line in lines]
@@ -131,7 +131,7 @@ def buscar(constelacion,chat_id):
 
         # Enviar la imagen al chat
         bot.send_photo(chat_id, buf)
-        gif_path = "Bot_telgram\Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
+        gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
         bot.send_animation(chat_id, open(gif_path, "rb"))
         # Limpiar el buffer y el plot
         buf.truncate(0)
@@ -208,7 +208,7 @@ def mostrarEstrellas(chat_id):
 
   # Enviar la imagen al chat
   bot.send_photo(chat_id, buf)
-  gif_path = "Bot_telgram\Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
+  gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
   bot.send_animation(chat_id, open(gif_path, "rb"))
   # Limpiar el buffer y el plot
   buf.truncate(0)
@@ -217,21 +217,21 @@ def mostrarEstrellas(chat_id):
 
 def mostrar_constelaciones(chat_id):
   # Leer archivo y almacenar datos en una lista
-  with open('Bot_telgram/constellations/Cygnet.txt') as f:
+  with open('constellations/Cygnet.txt') as f:
       lines = f.readlines()
-  with open('Bot_telgram/constellations/Boyero.txt') as f:
+  with open('constellations/Boyero.txt') as f:
       lines1 = f.readlines()
-  with open('Bot_telgram/constellations/Casiopea.txt') as f:
+  with open('constellations/Casiopea.txt') as f:
       lines2 = f.readlines()
-  with open('Bot_telgram/constellations/Cazo.txt') as f:
+  with open('constellations/Cazo.txt') as f:
       lines3 = f.readlines()
-  with open('Bot_telgram/constellations/Geminis.txt') as f:
+  with open('constellations/Geminis.txt') as f:
       lines4 = f.readlines()
-  with open('Bot_telgram/constellations/Hydra.txt') as f:
+  with open('constellations/Hydra.txt') as f:
       lines5 = f.readlines()
-  with open('Bot_telgram/constellations/OsaMayor.txt') as f:
+  with open('constellations/OsaMayor.txt') as f:
       lines6 = f.readlines()
-  with open('Bot_telgram/constellations/OsaMenor.txt') as f:
+  with open('constellations/OsaMenor.txt') as f:
       lines7 = f.readlines()
 
   # Eliminar saltos de línea y separar elementos de cada línea
@@ -356,7 +356,7 @@ def mostrar_constelaciones(chat_id):
 
     # Enviar la imagen al chat
   bot.send_photo(chat_id, buf)
-  gif_path = "Bot_telgram\Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
+  gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
   bot.send_animation(chat_id, open(gif_path, "rb"))
     # Limpiar el buffer y el plot
   buf.truncate(0)
@@ -398,8 +398,8 @@ def RRLHCCC_RRLNHCCC(funcion, valores_iniciales, chat_id):
         constantes = sp.solve(sistema_ecuaciones)
         solucion_general = ecuacion_general.subs(constantes)
         latex_solucion_general = sp.latex(solucion_general)
-        print(latex_solucion_general)
-        # latex_code = "\\scalebox{2}{" + latex_solucion_general + "}"
+        
+ 
         send_latex_code(latex_solucion_general, chat_id)
 
 
@@ -515,7 +515,7 @@ def enviar(message):
     texto_html += ' ' + '\n'
     texto_html += '❓🌟<b>/ayuda:</b> Instrucciones de como utilizar constelaciones' + '\n'
     bot.reply_to(message, texto_html, parse_mode="html")
-    gif_path = "Bot_telgram\Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
+    gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
     bot.send_animation(chat_id, open(gif_path, "rb"))
 
 @bot.message_handler(commands=['ayuda', 'Ayuda'])
