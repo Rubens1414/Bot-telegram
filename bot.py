@@ -207,8 +207,6 @@ def mostrarEstrellas(chat_id):
 
   # Enviar la imagen al chat
   bot.send_photo(chat_id, buf)
-  gif_path = "Images\ketnipz-star.gif"  # Ruta al archivo GIF que deseas enviar
-  bot.send_animation(chat_id, open(gif_path, "rb"))
   # Limpiar el buffer y el plot
   buf.truncate(0)
   buf.seek(0)
@@ -362,6 +360,8 @@ def mostrar_constelaciones(chat_id):
   plt.clf()
 def send_latex_code(latex_text, chat_id):
     try:
+        # Configurar el fondo de la figura en blanco
+        plt.figure(facecolor='white')
         # Configurar el texto de Látex en la imagen
         plt.text(0.5, 0.5, f"${latex_text}$", fontsize=35, horizontalalignment='center')
         plt.axis("off")
